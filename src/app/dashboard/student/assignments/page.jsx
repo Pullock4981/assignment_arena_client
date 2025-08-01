@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function ViewAssignments() {
@@ -19,6 +18,7 @@ export default function ViewAssignments() {
             } catch (error) {
                 console.error("Error fetching assignments:", error);
 
+                // Fallback mock data
                 setAssignments([
                     {
                         _id: 1,
@@ -42,27 +42,6 @@ export default function ViewAssignments() {
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-indigo-800">Available Assignments</h2>
-
-            {/* Navigation Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-                <Link href="/dashboard/student/assignments">
-                    <div className="cursor-pointer bg-indigo-100 hover:bg-indigo-200 text-indigo-900 font-semibold p-4 rounded-lg shadow text-center transition-colors">
-                        📄 View Assignments
-                    </div>
-                </Link>
-
-                <Link href="/assignments/submit">
-                    <div className="cursor-pointer bg-green-100 hover:bg-green-200 text-green-900 font-semibold p-4 rounded-lg shadow text-center transition-colors">
-                        📤 Submit Assignment
-                    </div>
-                </Link>
-
-                <Link href="/assignments/feedback">
-                    <div className="cursor-pointer bg-yellow-100 hover:bg-yellow-200 text-yellow-900 font-semibold p-4 rounded-lg shadow text-center transition-colors">
-                        📝 Feedback & History
-                    </div>
-                </Link>
-            </div>
 
             {assignments.length === 0 ? (
                 <p className="text-gray-600">No assignments found.</p>
