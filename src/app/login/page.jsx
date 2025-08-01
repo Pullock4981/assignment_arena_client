@@ -17,11 +17,15 @@ export default function LoginPage() {
         e.preventDefault();
         setError('');
         setLoading(true);
-
         try {
             const res = await axios.post('http://localhost:5000/login', form);
             localStorage.setItem('user', JSON.stringify(res.data));
-            router.push('/'); // redirect to homepage or dashboard
+
+            if (res.data.role === 'instructor') {
+                router.push('/dashboard/instructor');
+            } else {
+                router.push('/dashboard/student');
+            }
         } catch (err) {
             setError(err.response?.data || 'Login failed');
         } finally {
