@@ -1,5 +1,7 @@
 'use client';
+
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function ViewAssignments() {
     const [assignments, setAssignments] = useState([]);
@@ -7,7 +9,7 @@ export default function ViewAssignments() {
     useEffect(() => {
         const fetchAssignments = async () => {
             try {
-                const response = await fetch("http://localhost:5000/assignments");
+                const response = await fetch("https://assignment-arena-server.vercel.app/assignments");
 
                 if (!response.ok) {
                     throw new Error(`Server Error: ${response.status}`);
@@ -48,21 +50,24 @@ export default function ViewAssignments() {
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {assignments.map((assignment) => (
-                        <div
+                        <Link
                             key={assignment._id}
-                            className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col"
+                            href={`/dashboard/student/assignments/${assignment._id}`}
+                            className="block" // Ensures the link behaves like a block element
                         >
-                            <h3 className="text-xl font-semibold text-indigo-900 mb-2">{assignment.title}</h3>
-                            <p className="text-gray-700 flex-grow">{assignment.description}</p>
-                            <p className="mt-4 text-sm text-gray-500">
-                                Deadline:{" "}
-                                {new Date(assignment.deadline).toLocaleDateString(undefined, {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric',
-                                })}
-                            </p>
-                        </div>
+                            <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col cursor-pointer">
+                                <h3 className="text-xl font-semibold text-indigo-900 mb-2">{assignment.title}</h3>
+                                <p className="text-gray-700 flex-grow">{assignment.description}</p>
+                                <p className="mt-4 text-sm text-gray-500">
+                                    Deadline:{" "}
+                                    {new Date(assignment.deadline).toLocaleDateString(undefined, {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                    })}
+                                </p>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             )}

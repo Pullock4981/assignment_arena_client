@@ -21,7 +21,7 @@ export default function CreateAssignment() {
             // Assuming your API expects createdBy, get it from localStorage user id
             const user = JSON.parse(localStorage.getItem('user'));
             const payload = { ...form, createdBy: user.id };
-            await axios.post('http://localhost:5000/assignments', payload);
+            await axios.post('https://assignment-arena-server.vercel.app/assignments', payload);
             setMessage('Assignment created successfully!');
             setForm({ title: '', description: '', deadline: '' });
         } catch (error) {

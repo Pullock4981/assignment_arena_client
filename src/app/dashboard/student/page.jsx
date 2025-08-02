@@ -8,7 +8,7 @@ export default function ViewAssignments() {
     useEffect(() => {
         const fetchAssignments = async () => {
             try {
-                const response = await fetch("http://localhost:5000/assignments");
+                const response = await fetch("https://assignment-arena-server.vercel.app/assignments");
 
                 if (!response.ok) {
                     throw new Error(`Server Error: ${response.status}`);
@@ -51,15 +51,9 @@ export default function ViewAssignments() {
                     </div>
                 </Link>
 
-                <Link href="/assignments/submit">
+                <Link href="/dashboard/student/submitted">
                     <div className="cursor-pointer bg-green-100 hover:bg-green-200 text-green-900 font-semibold p-4 rounded-lg shadow text-center transition-colors">
-                        📤 Submit Assignment
-                    </div>
-                </Link>
-
-                <Link href="/assignments/feedback">
-                    <div className="cursor-pointer bg-yellow-100 hover:bg-yellow-200 text-yellow-900 font-semibold p-4 rounded-lg shadow text-center transition-colors">
-                        📝 Feedback & History
+                        📤 Submitted Assignment
                     </div>
                 </Link>
             </div>

@@ -17,11 +17,20 @@ export default function LoginPage() {
         e.preventDefault();
         setError('');
         setLoading(true);
-        try {
-            const res = await axios.post('http://localhost:5000/login', form);
-            localStorage.setItem('user', JSON.stringify(res.data));
 
-            if (res.data.role === 'instructor') {
+        try {
+            const res = await axios.post('https://assignment-arena-server.vercel.app/login', form);
+            const user = res.data;
+
+            // ✅ Save entire user object (optional)
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // ✅ Save specific properties
+            localStorage.setItem('userId', user._id);
+            localStorage.setItem('userName', user.name);
+
+            // ✅ Redirect based on role
+            if (user.role === 'instructor') {
                 router.push('/dashboard/instructor');
             } else {
                 router.push('/dashboard/student');

@@ -29,15 +29,15 @@ export default function DashboardLayout({ children }) {
         { href: '/dashboard/instructor', label: 'Dashboard Home' },
         { href: '/dashboard/instructor/create', label: 'Create Assignment' },
         { href: '/dashboard/instructor/submissions', label: 'Student Submissions' },
-        { href: '/dashboard/instructor/feedback', label: 'Feedback & Update' },
+        // { href: '/dashboard/instructor/feedback', label: 'Feedback & Update' },
         { href: '/dashboard/instructor/stats', label: 'Status (Pie Chart)' },
     ];
 
     const studentLinks = [
         { href: '/dashboard/student', label: 'Dashboard Home' },
         { href: '/dashboard/student/assignments', label: 'View Assignments' },
-        { href: '/dashboard/student/submit', label: 'Submit Assignment' },
-        { href: '/dashboard/student/history', label: 'Status & Feedback' },
+        { href: '/dashboard/student/submitted', label: 'Submitted Assignment' }
+        // { href: '/dashboard/student/history', label: 'Status & Feedback' },
     ];
 
     const links = user?.role === 'instructor' ? instructorLinks : studentLinks;

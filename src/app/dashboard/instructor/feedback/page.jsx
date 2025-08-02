@@ -10,7 +10,7 @@ export default function Feedback() {
     useEffect(() => {
         async function fetchSubmissions() {
             try {
-                const res = await axios.get('http://localhost:5000/submissions/all'); // Adjust endpoint
+                const res = await axios.get('https://assignment-arena-server.vercel.app/submissions/all'); // Adjust endpoint
                 setSubmissions(res.data);
             } catch (error) {
                 console.error(error);
@@ -36,7 +36,7 @@ export default function Feedback() {
         if (!fb || !fb.status) return alert('Please fill status.');
 
         try {
-            await axios.put(`http://localhost:5000/feedback/${id}`, {
+            await axios.put(`https://assignment-arena-server.vercel.app/feedback/${id}`, {
                 feedback: fb.feedback || '',
                 status: fb.status,
             });

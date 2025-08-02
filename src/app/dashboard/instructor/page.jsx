@@ -14,7 +14,7 @@ export default function InstructorDashboard() {
             const parsedUser = JSON.parse(storedUser);
             if (parsedUser.role === 'instructor') {
                 setUser(parsedUser);
-                fetch('http://localhost:5000/assignments')
+                fetch('https://assignment-arena-server.vercel.app/assignments')
                     .then(res => {
                         if (!res.ok) throw new Error('Failed to fetch assignments');
                         return res.json();
@@ -67,11 +67,6 @@ export default function InstructorDashboard() {
                     <Link href="/dashboard/instructor/submissions">
                         <div className="p-4 bg-green-100 hover:bg-green-200 rounded shadow text-center cursor-pointer transition-all">
                             📂 View Submissions
-                        </div>
-                    </Link>
-                    <Link href="/dashboard/instructor/feedback">
-                        <div className="p-4 bg-yellow-100 hover:bg-yellow-200 rounded shadow text-center cursor-pointer transition-all">
-                            ✍️ Give Feedback
                         </div>
                     </Link>
                     <Link href="/dashboard/instructor/stats">

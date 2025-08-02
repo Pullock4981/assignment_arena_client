@@ -23,7 +23,7 @@ export default function RegisterPage() {
         setError('');
         setSuccess('');
         try {
-            const res = await axios.post('http://localhost:5000/register', form);
+            const res = await axios.post('https://assignment-arena-server.vercel.app/register', form);
             setSuccess('Registration successful! Redirecting to login...');
             setTimeout(() => router.push('/login'), 1500);
         } catch (err) {

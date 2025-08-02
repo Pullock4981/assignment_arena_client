@@ -1,103 +1,104 @@
-import Image from "next/image";
+'use client';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-white text-gray-800">
+      {/* Hero Section */}
+      <section className="bg-blue-50 py-20 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome to the Assignment Submission Portal</h1>
+        <p className="text-lg mb-6">Easily manage and submit assignments for students and instructors.</p>
+        {/* <Link href="/login">
+          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            Get Started
+          </button>
+        </Link> */}
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Features */}
+      <section className="py-16 px-6 md:px-20 bg-white">
+        <h2 className="text-3xl font-semibold text-center mb-12">🚀 Key Features</h2>
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            { title: 'Secure Login', desc: 'Role-based login system for students and instructors.' },
+            { title: 'Assignment Management', desc: 'Instructors can create and track assignments.' },
+            { title: 'Submission Status & Feedback', desc: 'Students receive real-time status updates and feedback.' }
+          ].map((feature, i) => (
+            <div key={i} className="bg-gray-100 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-gray-600">{feature.desc}</p>
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Roles */}
+      <section className="py-16 px-6 md:px-20 bg-gray-50">
+        <h2 className="text-3xl font-semibold text-center mb-10">👥 User Roles</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 border rounded-lg shadow-sm">
+            <h3 className="text-2xl font-bold mb-2">🎓 Student</h3>
+            <ul className="list-disc list-inside text-gray-700">
+              <li>View all active assignments</li>
+              <li>Submit files before deadlines</li>
+              <li>Track submission status</li>
+              <li>Receive instructor feedback</li>
+            </ul>
+          </div>
+          <div className="bg-white p-6 border rounded-lg shadow-sm">
+            <h3 className="text-2xl font-bold mb-2">🧑‍🏫 Instructor</h3>
+            <ul className="list-disc list-inside text-gray-700">
+              <li>Create new assignments</li>
+              <li>Monitor student submissions</li>
+              <li>Give feedback & grade work</li>
+              <li>Visualize submission stats</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-16 px-6 md:px-20 bg-white">
+        <h2 className="text-3xl font-semibold text-center mb-10">⚙️ How It Works</h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 className="text-xl font-bold mb-4">For Students</h3>
+            <ol className="list-decimal list-inside text-gray-700 space-y-1">
+              <li>Login or Register as a student</li>
+              <li>Browse available assignments</li>
+              <li>Upload your work before the deadline</li>
+              <li>Wait for feedback</li>
+            </ol>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">For Instructors</h3>
+            <ol className="list-decimal list-inside text-gray-700 space-y-1">
+              <li>Login or Register as an instructor</li>
+              <li>Create and publish assignments</li>
+              <li>Review student submissions</li>
+              <li>Provide feedback or grade</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-blue-600 text-white text-center py-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+        <p className="mb-6 text-lg">Join now and streamline your academic workflow.</p>
+        <div className="flex justify-center gap-4">
+          <Link href="/register">
+            <button className="px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 font-semibold">
+              Register
+            </button>
+          </Link>
+          <Link href="/login">
+            <button className="px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 font-semibold">
+              Login
+            </button>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
